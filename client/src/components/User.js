@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import {useForm} from "react-hook-form"
 import getConfig from "../utils/getConfig"
+import { URL_API } from "../http/const";
 
 
 const User = () => {
@@ -31,7 +32,7 @@ const User = () => {
       .then((res) => setCharacters(res.data.results));
 
     axios
-      .get(`http://localhost:8000/api/usuarios/${id}`,getConfig())
+      .get(`${URL_API}/usuarios/${id}`,getConfig())
       .then((res) => setUser(res.data.user[0]));
   }, []);
 
@@ -47,7 +48,7 @@ const User = () => {
 
   const onSubmit=(data)=>{
     axios
-    .patch(`http://localhost:8000/api/usuarios/${id}`,data, getConfig())
+    .patch(`${URL_API}/usuarios/${id}`,data, getConfig())
     .then(res=> {handleClose()
                   setRefresh(user.name)})
     alert("se ha modificado el usuario con exito!")

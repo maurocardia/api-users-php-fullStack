@@ -14,13 +14,14 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import { URL_API } from "../http/const";
 
 const SignUp = () => {
   const navigate = useNavigate();
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    axios.post("http://127.0.0.1:8000/api/register", data).then((res) => {
+    axios.post(`${URL_API}/register`, data).then((res) => {
       alert(`usuario ${data.name} creado, por favor inicie sesion`);
       navigate("/");
     });

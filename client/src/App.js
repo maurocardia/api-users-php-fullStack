@@ -13,6 +13,7 @@ function App() {
   return (
     <HashRouter>
       <NavBarApp/>
+      
       <Routes>
       <Route element={<ProtectedRout/>}>
         <Route path="/:id" element={<User/>}/>

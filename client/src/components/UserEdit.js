@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import {useForm} from "react-hook-form"
+import { URL_API } from "../http/const";
 
 const UserEdit = () => {
 
@@ -16,7 +17,7 @@ const UserEdit = () => {
  
     const onSubmit=(data)=>{
     
-        axios.post("http://127.0.0.1:8000/api/register",data)
+        axios.post(`${URL_API}/api/register`,data)
         .then(res=>{ alert(`usuario ${data.name} creado, por favor inicie sesion`)
                   navigate("/")})
         }

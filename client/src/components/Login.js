@@ -5,6 +5,7 @@ import "../styles/login.css"
 import {useForm} from "react-hook-form"
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { URL_API } from "../http/const";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -13,7 +14,7 @@ const Login = () => {
     const [personaje,setPersonaje]=useState([])
 
     useEffect(()=>{
-        axios.get("http://127.0.0.1:8000/api/usuarios")
+        axios.get(`${URL_API}/usuarios`)
         .then(res=>setPersonaje(res.data))
 
         },[])
@@ -21,7 +22,7 @@ const Login = () => {
 
     const onSubmit=(data)=>{
     
-        axios.post("http://127.0.0.1:8000/api/login",data)
+        axios.post(`${URL_API}/login`,data)
         .then(res=> {console.log(res.data.accessToken)
             localStorage.setItem('token',res.data.accessToken)
                     navigate(`/${res.data.user.id}`)})
